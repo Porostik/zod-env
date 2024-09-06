@@ -3,7 +3,7 @@ import { processing } from "./process";
 
 export const createEnv = <T extends ZodRawShape>({
   shape,
-  keyFormat = (key: string) => key,
+  keyFormat,
   env,
 }: {
   shape: T;

@@ -19,6 +19,5 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src", "example", "vite-env.d.ts"]
+  }
 }
