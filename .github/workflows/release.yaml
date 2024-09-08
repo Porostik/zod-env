@@ -7,23 +7,37 @@ on:
 
 jobs:
   Changelog:
+    permissions:
+      actions: write
+      attestations: write
+      checks: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
     runs-on: ubuntu-latest
     environment: npm-release
-
     steps:
       - uses: actions/checkout@v2
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v5.3.0
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: "./package.json"
 
       - name: create release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
