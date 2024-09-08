@@ -32,6 +32,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           version-file: "./package.json"
+          skip-commit: true
 
       - name: create release
         uses: actions/create-release@v1
