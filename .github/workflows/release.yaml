@@ -11,14 +11,12 @@ jobs:
     environment: npm-release
 
     steps:
-      - run: echo ${{ secrets.GH_TOKEN }}
-
       - uses: actions/checkout@v2
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v5.3.0
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ github.token }}
           version-file: "./package.json"
 
       - name: create release
