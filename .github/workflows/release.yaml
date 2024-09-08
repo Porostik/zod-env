@@ -11,7 +11,7 @@ jobs:
     environment: npm-release
 
     steps:
-      - run: ${{ secrets.GH_TOKEN }}
+      - run: echo ${{ secrets.GH_TOKEN }}
 
       - uses: actions/checkout@v2
       - name: Conventional Changelog Action
